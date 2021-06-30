@@ -14,16 +14,20 @@ jobs:
         Expand-Archive -Path "../tldag-version.zip" -DestinationPath ".."
 
     - name: Update versions
+      uses: actions/checkout@v2
+      with:
+        repository: 'tldag/tldag-commons'
       run: |
-        Set-Content -Path "~/.git-credentials" -Value "https://rhjoerg:${{secrets.TLDAG_TOKEN}}@github.com"
-        git config --global user.name "rhjoerg"
-        git config --global user.email "rhjoerg@gmail.com"
-        git config --global gc.auto 0
-        git config --global credential.helper store
-        Get-Content -Path "~/.gitconfig"
-        git init .
-        git clone "https://github.com/tldag/tldag-commons.git"
-        cd tldag-commons
-        ../../tldag-version.exe 0.0.0 12 tldag-commons/tldag-commons.csproj
-        git commit -a -m "Version Update"
-        git push origin main
+        Get-ChildItems -Path "~"
+#        Set-Content -Path "~/.git-credentials" -Value "https://rhjoerg:${{secrets.TLDAG_TOKEN}}@github.com"
+#        git config --global user.name "rhjoerg"
+#        git config --global user.email "rhjoerg@gmail.com"
+#        git config --global gc.auto 0
+#        git config --global credential.helper store
+#        Get-Content -Path "~/.gitconfig"
+#        git init .
+#        git clone "https://github.com/tldag/tldag-commons.git"
+#        cd tldag-commons
+#        ../../tldag-version.exe 0.0.0 12 tldag-commons/tldag-commons.csproj
+#        git commit -a -m "Version Update"
+#        git push origin main
