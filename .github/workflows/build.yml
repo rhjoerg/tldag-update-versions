@@ -7,17 +7,17 @@ jobs:
   Build:
     runs-on: windows-latest
     steps:
-
     - name: Download and Extract "tldag-version"
       run: |
         Invoke-WebRequest -Uri "https://github.com/tldag/tldag-version/releases/download/latest/tldag-version.zip" -OutFile "../tldag-version.zip"
         Expand-Archive -Path "../tldag-version.zip" -DestinationPath ".."
-
-    - name: Update versions
+    - name: Checkout "tldag/tldag-commons"
       uses: actions/checkout@v2
       with:
-        repository: 'tldag/tldag-commons'
+        repository: "tldag/tldag-commons"
         token: ${{secrets.TLDAG_TOKEN}}
+    - name: Update "tldag/tldag-commons"
+      run: ../../tldag-version.exe 0.0.0 12 tldag-commons/tldag-commons.csproj
 #        Set-Content -Path "~/.git-credentials" -Value "https://rhjoerg:${{secrets.TLDAG_TOKEN}}@github.com"
 #        git config --global user.name "rhjoerg"
 #        git config --global user.email "rhjoerg@gmail.com"
