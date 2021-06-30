@@ -18,8 +18,8 @@ jobs:
         $v = "../../tldag-version.exe"
         git config --global user.name "rhjoerg"
         git config --global user.email "rhjoerg@gmail.com"
-        git config --global credential.helper store !f() { echo "password=${{secrets.TLDAG_TOKEN}}"; }; f
         git config --global gc.auto 0
+        Get-Content -Path "~/.gitconfig"
         git init .
         git clone "https://github.com/tldag/tldag-commons.git"
         cd tldag-commons
