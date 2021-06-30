@@ -15,7 +15,7 @@ jobs:
 
     - name: Update versions
       run: |
-        Set-Content -Path "~/.git-credentials" -Value "https://rhjoerg:${{secrets.TLDAG_TOKEN}}>@github.com"
+        Set-Content -Path "~/.git-credentials" -Value "https://rhjoerg:${{secrets.TLDAG_TOKEN}}@github.com"
         git config --global user.name "rhjoerg"
         git config --global user.email "rhjoerg@gmail.com"
         git config --global gc.auto 0
