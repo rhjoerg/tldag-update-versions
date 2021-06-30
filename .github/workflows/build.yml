@@ -17,9 +17,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: 'tldag/tldag-commons'
-    - name: Contents
-      run: |
-        Get-ChildItem -Path "~" -Force
+        token: ${{secrets.TLDAG_TOKEN}}
 #        Set-Content -Path "~/.git-credentials" -Value "https://rhjoerg:${{secrets.TLDAG_TOKEN}}@github.com"
 #        git config --global user.name "rhjoerg"
 #        git config --global user.email "rhjoerg@gmail.com"
