@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: Build
+on: workflow_dispatch
+
+jobs:
+  Build:
+    runs-on: windows-latest
+    steps:
+
+    - name: Download and Extract "tldag-version"
+      run: |
+        Invoke-WebRequest -Uri "https://github.com/tldag/tldag-version/releases/download/latest/tldag-version.zip" -OutFile "../tldag-version.zip"
+        Expand-Archive -Path "../tldag-version.zip" -DestinationPath ".."
+
+    - name: Update versions
+      run: |
+        $v = "../../tldag-version.exe"
+        git config --global user.name "rhjoerg"
+        git config --global user.email "rhjoerg@gmail.com"
+        git config --global credential.helper store !f() { echo "${{secrets.TLDAG_TOKEN}}"; }; f
+        git config --global gc.auto 0
+        git init .
+        git clone "https://github.com/tldag/tldag-commons.git"
+        cd tldag-commons
+        ./$v 0.0.0 12 tldag-commons/tldag-commons.csproj
+        git commit -a -m "Version Update"
+        git push origin main
