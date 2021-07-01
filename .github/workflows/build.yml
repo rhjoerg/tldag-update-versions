@@ -20,6 +20,8 @@ jobs:
       run: |
         Get-ChildItem -Path "."
         ../tldag-version.exe 0.0.0 12 tldag-commons/tldag-commons.csproj
+    - name: Checkin "tldag/tldag-commons"
+      uses: EndBug/add-and-commit@v7.2.1
 #        Set-Content -Path "~/.git-credentials" -Value "https://rhjoerg:${{secrets.TLDAG_TOKEN}}@github.com"
 #        git config --global user.name "rhjoerg"
 #        git config --global user.email "rhjoerg@gmail.com"
