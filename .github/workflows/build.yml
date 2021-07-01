@@ -9,7 +9,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: ./install-tldag-version.ps1
-    - run: ~/tldag-version/tldag-version.exe
     - uses: actions/checkout@v2
       with:
         repository: "tldag/tldag-commons"
