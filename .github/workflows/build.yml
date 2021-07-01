@@ -9,6 +9,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: ./install-tldag-version.ps1
+    - run: Write-Host $Env:Path
 #    - name: Download and Install "tldag-version"
 #      run: |
 #        Invoke-WebRequest -Uri "https://github.com/tldag/tldag-version/releases/download/latest/tldag-version.zip" -OutFile "../tldag-version.zip"
