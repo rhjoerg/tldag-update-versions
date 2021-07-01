@@ -14,4 +14,4 @@ jobs:
         repository: "tldag/tldag-commons"
         token: ${{secrets.TLDAG_TOKEN}}
     - run: ~/tldag-version/tldag-version.exe 0.0.0 12 tldag-commons/tldag-commons.csproj
-    - run: EndBug/add-and-commit@v7.2.1
+    - uses: EndBug/add-and-commit@v7.2.1
