@@ -7,7 +7,7 @@ jobs:
   Build:
     runs-on: windows-latest
     steps:
-    - name: Download and Extract "tldag-version"
+    - name: Download and Install "tldag-version"
       run: |
         Invoke-WebRequest -Uri "https://github.com/tldag/tldag-version/releases/download/latest/tldag-version.zip" -OutFile "../tldag-version.zip"
         Expand-Archive -Path "../tldag-version.zip" -DestinationPath ".."
