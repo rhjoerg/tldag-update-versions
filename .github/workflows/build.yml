@@ -10,30 +10,9 @@ jobs:
     - uses: actions/checkout@v2
     - run: ./install-tldag-version.ps1
     - run: ~/tldag-version/tldag-version.exe
-#    - name: Download and Install "tldag-version"
-#      run: |
-#        Invoke-WebRequest -Uri "https://github.com/tldag/tldag-version/releases/download/latest/tldag-version.zip" -OutFile "../tldag-version.zip"
-#        Expand-Archive -Path "../tldag-version.zip" -DestinationPath ".."
-#    - name: Checkout "tldag/tldag-commons"
-#      uses: actions/checkout@v2
-#      with:
-#        repository: "tldag/tldag-commons"
-#        token: ${{secrets.TLDAG_TOKEN}}
-#    - name: Update "tldag/tldag-commons"
-#      run: |
-#        Get-ChildItem -Path "."
-#        ../tldag-version.exe 0.0.0 12 tldag-commons/tldag-commons.csproj
-#    - name: Checkin "tldag/tldag-commons"
-#      uses: EndBug/add-and-commit@v7.2.1
-#        Set-Content -Path "~/.git-credentials" -Value "https://rhjoerg:${{secrets.TLDAG_TOKEN}}@github.com"
-#        git config --global user.name "rhjoerg"
-#        git config --global user.email "rhjoerg@gmail.com"
-#        git config --global gc.auto 0
-#        git config --global credential.helper store
-#        Get-Content -Path "~/.gitconfig"
-#        git init .
-#        git clone "https://github.com/tldag/tldag-commons.git"
-#        cd tldag-commons
-#        ../../tldag-version.exe 0.0.0 12 tldag-commons/tldag-commons.csproj
-#        git commit -a -m "Version Update"
-#        git push origin main
+    - uses: actions/checkout@v2
+      with:
+        repository: "tldag/tldag-commons"
+        token: ${{secrets.TLDAG_TOKEN}}
+    - run: ~/tldag-version/tldag-version.exe 0.0.0 12 tldag-commons/tldag-commons.csproj
+    - run: EndBug/add-and-commit@v7.2.1
